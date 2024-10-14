@@ -1,6 +1,5 @@
-package git.changxxx.inputs.ui.theme
+package git.changxxx.core.designsystem.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

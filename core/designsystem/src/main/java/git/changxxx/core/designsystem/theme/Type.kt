@@ -1,4 +1,4 @@
-package git.changxxx.inputs.ui.theme
+package git.changxxx.core.designsystem.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

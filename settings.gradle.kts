@@ -22,4 +22,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "inputs"
 include(":app")
- 
+include(":core:designsystem")

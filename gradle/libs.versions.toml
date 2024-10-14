@@ -36,6 +36,7 @@ activity = "1.9.0"                          # https://developer.android.com/jetp
 # Android Jetpack - Compose
 compose-bom = "2024.05.00"                  # https://developer.android.com/jetpack/compose/bom
 compose-material3 = "1.2.1"                 # https://developer.android.com/jetpack/androidx/releases/compose-material3
+compose-runtime = "1.7.0"                   # https://developer.android.com/jetpack/androidx/releases/compose-runtime
 
 # Android Jetpack - Data
 datastore = "1.1.1"                         # https://developer.android.com/topic/libraries/architecture/datastore
@@ -123,14 +124,15 @@ activity-compose = { group = "androidx.activity", name = "activity-compose", ver
 
 # Compose
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
-ui = { group = "androidx.compose.ui", name = "ui" }
-ui-util = { group = "androidx.compose.ui", name = "ui-util" }
-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "compose-material3" }
-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+compose-ui = { group = "androidx.compose.ui", name = "ui" }
+compose-ui-util = { group = "androidx.compose.ui", name = "ui-util" }
+compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "compose-material3" }
+compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+compose-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "compose-runtime" }
 
 # Android Jetpack - Data
 datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
@@ -222,4 +224,5 @@ room = { id = "androidx.room", version.ref = "room" }
 
 # Custom Plugins
 inputs-android-application = { id = "chang.android.application", version = "unspecified" }
-inputs-android-compose = { id = "chang.android.compose", version = "unspecified" }
+inputs-android-library = { id = "chang.android.library", version = "unspecified" }
+inputs-android-compose-library = { id = "chang.android.compose.library", version = "unspecified" }

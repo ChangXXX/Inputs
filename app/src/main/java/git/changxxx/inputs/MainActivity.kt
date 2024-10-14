@@ -10,12 +10,18 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import git.changxxx.inputs.ui.theme.InputsTheme
+import androidx.core.view.WindowCompat
+import dagger.hilt.android.AndroidEntryPoint
+import git.changxxx.core.designsystem.theme.InputsTheme
 
-class MainActivity : ComponentActivity() {
+@AndroidEntryPoint
+class MainActivity: ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
         enableEdgeToEdge()
         setContent {
             InputsTheme {
@@ -36,12 +42,5 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         text = "Hello $name!",
         modifier = modifier
     )
-}
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    InputsTheme {
-        Greeting("Android")
-    }
 }

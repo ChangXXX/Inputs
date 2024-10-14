@@ -1,4 +1,4 @@
-package git.changxxx.inputs.ui.theme
+package git.changxxx.core.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 
