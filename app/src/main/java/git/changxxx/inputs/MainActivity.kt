@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.core.view.WindowCompat
 import dagger.hilt.android.AndroidEntryPoint
 import git.changxxx.core.designsystem.theme.InputsTheme
+import git.changxxx.feature.note.NoteList
 
 @AndroidEntryPoint
 class MainActivity: ComponentActivity() {
@@ -26,21 +27,9 @@ class MainActivity: ComponentActivity() {
         setContent {
             InputsTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    NoteList()
                 }
             }
         }
     }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-
 }

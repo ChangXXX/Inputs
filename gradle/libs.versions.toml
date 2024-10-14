@@ -133,6 +133,7 @@ compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4
 compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 compose-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "compose-runtime" }
+compose-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "compose-runtime" }
 
 # Android Jetpack - Data
 datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
@@ -198,6 +199,16 @@ debugtools = [
     "localebro-okhttpprofiler"
 ]
 
+compose = [
+    "compose-runtime",
+    "compose-runtime-livedata",
+    "compose-material3",
+    "compose-ui",
+    "compose-ui-graphics",
+    "compose-ui-tooling-preview",
+    "lifecycle-runtime-compose"
+]
+
 [plugins]
 # Ktlint
 gradle-ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
@@ -226,3 +237,5 @@ room = { id = "androidx.room", version.ref = "room" }
 inputs-android-application = { id = "chang.android.application", version = "unspecified" }
 inputs-android-library = { id = "chang.android.library", version = "unspecified" }
 inputs-android-compose-library = { id = "chang.android.compose.library", version = "unspecified" }
+inputs-android-hilt = { id = "chang.android.hilt", version = "unspecified" }
+inputs-android-feature = { id = "chang.android.feature", version = "unspecified" }
