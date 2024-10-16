@@ -24,3 +24,5 @@ rootProject.name = "inputs"
 include(":app")
 include(":core:designsystem")
 include(":feature:note")
+include(":feature:write")
+include(":feature:notedetail")

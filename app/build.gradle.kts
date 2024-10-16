@@ -44,6 +44,8 @@ dependencies {
 
     implementation(project(":core:designsystem"))
     implementation(project(":feature:note"))
+    implementation(project(":feature:notedetail"))
+    implementation(project(":feature:write"))
 
     implementation(libs.timber)
 
