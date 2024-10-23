@@ -23,6 +23,8 @@ dependencyResolutionManagement {
 rootProject.name = "inputs"
 include(":app")
 include(":core:designsystem")
+include(":core:navigation")
 include(":feature:note")
 include(":feature:write")
 include(":feature:notedetail")
+include(":feature:main")

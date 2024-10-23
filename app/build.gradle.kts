@@ -43,9 +43,7 @@ android {
 dependencies {
 
     implementation(project(":core:designsystem"))
-    implementation(project(":feature:note"))
-    implementation(project(":feature:notedetail"))
-    implementation(project(":feature:write"))
+    implementation(project(":feature:main"))
 
     implementation(libs.timber)
 
