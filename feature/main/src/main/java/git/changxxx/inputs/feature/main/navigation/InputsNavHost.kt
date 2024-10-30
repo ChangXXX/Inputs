@@ -19,7 +19,7 @@ fun InputsNavHost(
         startDestination = Route.Note.route,
     ) {
         composable(Route.Note.route) {
-            NoteScreen()
+            NoteScreen(navHostController)
         }
         composable(Route.Write.route) {
             WriteNote()
