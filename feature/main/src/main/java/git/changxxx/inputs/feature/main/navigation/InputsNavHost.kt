@@ -7,7 +7,7 @@ import androidx.navigation.compose.composable
 import git.changxxx.core.navigation.Route
 import git.changxxx.feature.note.NoteScreen
 import git.changxxx.feature.notedetail.NoteDetailScreen
-import git.changxxx.feature.write.WriteNote
+import git.changxxx.feature.write.WriteScreen
 import git.changxxx.inputs.feature.favorites.FavoritesScreen
 
 @Composable
@@ -22,7 +22,7 @@ fun InputsNavHost(
             NoteScreen(navHostController)
         }
         composable(Route.Write.route) {
-            WriteNote()
+            WriteScreen()
         }
         composable(Route.Favorites.route) {
             FavoritesScreen()
