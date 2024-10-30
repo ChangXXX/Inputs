@@ -16,6 +16,7 @@ dependencies {
     implementation(project(":feature:note"))
     implementation(project(":feature:notedetail"))
     implementation(project(":feature:write"))
+    implementation(project(":feature:favorites"))
 
     implementation(libs.activity.compose)
     implementation(libs.core.ktx)
