@@ -41,7 +41,8 @@ fun WriteBottomSheetDialog(
             is WriteBottomSheetState.TextInput -> {
                 WriteTextContents(
                     onBackClick = { currentContent = WriteBottomSheetState.Initial },
-                    onConfirm = onClickConfirm
+                    onConfirm = onClickConfirm,
+                    writeTextItem = currentContent as WriteBottomSheetState.TextInput
                 )
             }
         }
