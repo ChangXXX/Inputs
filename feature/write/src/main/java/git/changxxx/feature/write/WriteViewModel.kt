@@ -44,7 +44,7 @@ internal class WriteViewModel @Inject constructor() : ViewModel() {
         }
     }
 
-    private suspend fun handleWriteViewEvent(event: WriteViewEvent) {
+    private fun handleWriteViewEvent(event: WriteViewEvent) {
         when (event) {
             WriteViewEvent.ShowWriteBottomSheet -> {
                 _writeViewState.showWriteBottomSheet.update { true }

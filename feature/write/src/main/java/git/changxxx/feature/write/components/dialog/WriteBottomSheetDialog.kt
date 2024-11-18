@@ -1,5 +1,6 @@
 package git.changxxx.feature.write.components.dialog
 
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
@@ -10,6 +11,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import git.changxxx.feature.write.components.dialog.text.WriteTextContents
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -30,6 +32,18 @@ fun WriteBottomSheetDialog(
             }
         }
     ) {
-        Text(text = "add Text?")
+        when (currentContent) {
+            is WriteBottomSheetState.Initial -> {
+                Button(onClick = { currentContent = WriteBottomSheetState.TextInput() }) {
+                    Text(text = "add Text?")
+                }
+            }
+            is WriteBottomSheetState.TextInput -> {
+                WriteTextContents(
+                    onBackClick = { currentContent = WriteBottomSheetState.Initial },
+                    onConfirm = onClickConfirm
+                )
+            }
+        }
     }
 }
