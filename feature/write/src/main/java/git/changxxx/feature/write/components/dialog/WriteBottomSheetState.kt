@@ -7,22 +7,19 @@ sealed interface WriteBottomSheetState {
             TextStyle.BOLD, TextStyle.ITALIC, TextStyle.UNDERLINE, TextStyle.STRIKETHROUGH
         ),
         val text: String = "",
-        val textSize: TextSize = TextSize.TEXT_SIZE_16,
+        val textSize: Int = defaultTextSize,
     ) : WriteBottomSheetState {
 
         sealed class TextStyle(
             val isSelected: Boolean,
         ) {
 
-            data object BOLD: TextStyle(false)
-            data object ITALIC: TextStyle(false)
-            data object UNDERLINE: TextStyle(false)
-            data object STRIKETHROUGH: TextStyle(false)
-        }
-
-        enum class TextSize {
-            TEXT_SIZE_16, TEXT_SIZE_24, TEXT_SIZE_32
+            data object BOLD : TextStyle(false)
+            data object ITALIC : TextStyle(false)
+            data object UNDERLINE : TextStyle(false)
+            data object STRIKETHROUGH : TextStyle(false)
         }
     }
-
 }
+
+private const val defaultTextSize = 16

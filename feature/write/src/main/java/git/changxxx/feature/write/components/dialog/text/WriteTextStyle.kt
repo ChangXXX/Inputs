@@ -38,7 +38,7 @@ internal fun WriteTextStyle(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .padding(8.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -48,6 +48,9 @@ internal fun WriteTextStyle(
         )
         LazyRow(
             userScrollEnabled = false,
+            modifier = Modifier.weight(2f),
+            horizontalArrangement = Arrangement.End,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             itemsIndexed(items = items, key = { index, _ -> index }) { _, item ->
                 when (item) {
