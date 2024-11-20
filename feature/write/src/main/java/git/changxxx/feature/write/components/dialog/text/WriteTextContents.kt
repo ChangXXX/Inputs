@@ -1,7 +1,11 @@
 package git.changxxx.feature.write.components.dialog.text
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import git.changxxx.feature.write.components.dialog.WriteBottomSheetState
 import git.changxxx.feature.write.components.dialog.WriteSheetTopBar
 
@@ -11,7 +15,10 @@ internal fun WriteTextContents(
     onConfirm: () -> Unit,
     writeTextItem: WriteBottomSheetState.TextInput
 ) {
-    Column {
+    Column (
+        modifier = Modifier
+            .wrapContentSize()
+    ){
         WriteSheetTopBar(
             onBackClick = onBackClick,
             onConfirm = onConfirm

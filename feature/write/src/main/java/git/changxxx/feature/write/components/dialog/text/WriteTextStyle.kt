@@ -3,10 +3,13 @@ package git.changxxx.feature.write.components.dialog.text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,6 +19,7 @@ import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -29,15 +33,18 @@ private val ICON_SIZE = 24.dp
 @Composable
 internal fun WriteTextStyle(
     onClickTextStyle: () -> Unit,
-    items: List<TextStyle>
+    items: List<TextStyle>,
 ) {
-    Row (
-        modifier = Modifier.fillMaxWidth()
-            .padding(8.dp),
-        horizontalArrangement = Arrangement.SpaceEvenly
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = "Style"
+            text = "Style",
+            modifier = Modifier.weight(1f)
         )
         LazyRow(
             userScrollEnabled = false,
@@ -47,7 +54,8 @@ internal fun WriteTextStyle(
                     TextStyle.BOLD -> {
                         IconButton(
                             onClick = onClickTextStyle,
-                            modifier = Modifier.size(48.dp)
+                            modifier = Modifier
+                                .size(48.dp)
                                 .background(
                                     color = if (item.isSelected) MaterialTheme.colorScheme.secondary else Color.Transparent,
                                     shape = RoundedCornerShape(8.dp)
@@ -62,10 +70,12 @@ internal fun WriteTextStyle(
                             )
                         }
                     }
+
                     TextStyle.ITALIC -> {
                         IconButton(
                             onClick = onClickTextStyle,
-                            modifier = Modifier.size(48.dp)
+                            modifier = Modifier
+                                .size(48.dp)
                                 .background(
                                     color = if (item.isSelected) MaterialTheme.colorScheme.secondary else Color.Transparent,
                                     shape = RoundedCornerShape(8.dp)
@@ -80,10 +90,12 @@ internal fun WriteTextStyle(
                             )
                         }
                     }
+
                     TextStyle.UNDERLINE -> {
                         IconButton(
                             onClick = onClickTextStyle,
-                            modifier = Modifier.size(48.dp)
+                            modifier = Modifier
+                                .size(48.dp)
                                 .background(
                                     color = if (item.isSelected) MaterialTheme.colorScheme.secondary else Color.Transparent,
                                     shape = RoundedCornerShape(8.dp)
@@ -98,10 +110,12 @@ internal fun WriteTextStyle(
                             )
                         }
                     }
+
                     TextStyle.STRIKETHROUGH -> {
                         IconButton(
                             onClick = onClickTextStyle,
-                            modifier = Modifier.size(48.dp)
+                            modifier = Modifier
+                                .size(48.dp)
                                 .background(
                                     color = if (item.isSelected) MaterialTheme.colorScheme.secondary else Color.Transparent,
                                     shape = RoundedCornerShape(8.dp)
