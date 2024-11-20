@@ -26,14 +26,20 @@ internal fun WriteTextContents(
             onConfirm = onConfirm
         )
         WriteTextStyle(
+            items = writeTextItem.textStyle,
             onClickTextStyle = {
                 onConfirm()
-            },
-            items = writeTextItem.textStyle
+            }
         )
         WriteTextSize(
-            onSizeChanged = {},
             textSize = writeTextItem.textSize,
+            onSizeChanged = {},
+        )
+        WriteEditText(
+            text = writeTextItem.text,
+            fontSize = writeTextItem.textSize,
+            fontStyle = writeTextItem.textStyle,
+            onTextChanged = {}
         )
     }
 }

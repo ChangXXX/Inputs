@@ -32,8 +32,8 @@ private val ICON_SIZE = 24.dp
 
 @Composable
 internal fun WriteTextStyle(
-    onClickTextStyle: () -> Unit,
     items: List<TextStyle>,
+    onClickTextStyle: () -> Unit,
 ) {
     Row(
         modifier = Modifier

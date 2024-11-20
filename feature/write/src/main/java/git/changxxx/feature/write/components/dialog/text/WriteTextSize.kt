@@ -21,9 +21,9 @@ private const val LOWER_BOUND_TEXT_SIZE = 12
 
 @Composable
 internal fun WriteTextSize(
-    onSizeChanged: (Int) -> Unit,
+    modifier: Modifier = Modifier,
     textSize: Int,
-    modifier: Modifier = Modifier
+    onSizeChanged: (Int) -> Unit,
 ) {
     Row(
         modifier = Modifier
