@@ -1,9 +1,7 @@
 package git.changxxx.feature.write.components.dialog.text
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -19,27 +17,28 @@ internal fun WriteTextContents(
     writeTextItem: WriteBottomSheetState.TextInput,
 ) {
     Column(
-        modifier = Modifier
-            .wrapContentSize()
-            .padding(start = 8.dp)
+        modifier = modifier
     ) {
         WriteSheetTopBar(
             onBackClick = onBackClick,
             onConfirm = onConfirm
         )
         WriteTextStyle(
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp),
             style = writeTextItem.textStyle,
             onClickTextStyle = { style ->
                 onChangedCurrentContent(writeTextItem.copy(textStyle = style))
             }
         )
         WriteTextSize(
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp),
             textSize = writeTextItem.textSize,
             onSizeChanged = { newSize ->
                 onChangedCurrentContent(writeTextItem.copy(textSize = newSize))
             },
         )
         WriteEditText(
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp),
             text = writeTextItem.text,
             fontSize = writeTextItem.textSize,
             fontStyle = writeTextItem.textStyle,

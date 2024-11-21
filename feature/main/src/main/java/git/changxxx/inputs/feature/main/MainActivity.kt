@@ -12,10 +12,9 @@ import git.changxxx.core.designsystem.theme.InputsTheme
 class MainActivity: ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        WindowCompat.setDecorFitsSystemWindows(window, false)
         enableEdgeToEdge()
+        super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
             InputsTheme {

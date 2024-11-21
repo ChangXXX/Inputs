@@ -30,7 +30,7 @@ fun WriteBottomSheetDialog(
             scope.launch {
                 sheetState.hide()
             }
-        }
+        },
     ) {
         when (currentContent) {
             is WriteBottomSheetState.Initial -> {

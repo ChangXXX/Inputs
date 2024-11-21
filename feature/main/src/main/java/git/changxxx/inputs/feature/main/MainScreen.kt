@@ -29,8 +29,8 @@ internal fun MainScreen(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(padding)
                 .background(Color.White)
+                .padding(padding)
         ) {
             InputsNavHost(navController)
         }
