@@ -42,7 +42,7 @@ internal fun WriteSheetTopBar(
                 modifier = Modifier
                     .align(Alignment.Center)
                     .size(ICON_SIZE),
-                contentDescription = null
+                contentDescription = "back"
             )
         }
 
@@ -56,7 +56,7 @@ internal fun WriteSheetTopBar(
                 modifier = Modifier
                     .align(Alignment.Center)
                     .size(ICON_SIZE),
-                contentDescription = null
+                contentDescription = "save"
             )
         }
     }

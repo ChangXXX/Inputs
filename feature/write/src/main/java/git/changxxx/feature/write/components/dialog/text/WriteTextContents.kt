@@ -12,11 +12,13 @@ import git.changxxx.feature.write.components.dialog.WriteSheetTopBar
 
 @Composable
 internal fun WriteTextContents(
+    modifier: Modifier = Modifier,
     onBackClick: () -> Unit,
     onConfirm: () -> Unit,
-    writeTextItem: WriteBottomSheetState.TextInput
+    onChangedCurrentContent: (WriteBottomSheetState) -> Unit,
+    writeTextItem: WriteBottomSheetState.TextInput,
 ) {
-    Column (
+    Column(
         modifier = Modifier
             .wrapContentSize()
             .padding(start = 8.dp)
@@ -26,20 +28,24 @@ internal fun WriteTextContents(
             onConfirm = onConfirm
         )
         WriteTextStyle(
-            items = writeTextItem.textStyle,
-            onClickTextStyle = {
-                onConfirm()
+            style = writeTextItem.textStyle,
+            onClickTextStyle = { style ->
+                onChangedCurrentContent(writeTextItem.copy(textStyle = style))
             }
         )
         WriteTextSize(
             textSize = writeTextItem.textSize,
-            onSizeChanged = {},
+            onSizeChanged = { newSize ->
+                onChangedCurrentContent(writeTextItem.copy(textSize = newSize))
+            },
         )
         WriteEditText(
             text = writeTextItem.text,
             fontSize = writeTextItem.textSize,
             fontStyle = writeTextItem.textStyle,
-            onTextChanged = {}
+            onTextChanged = { text ->
+                onChangedCurrentContent(writeTextItem.copy(text = text))
+            }
         )
     }
 }

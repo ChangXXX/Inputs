@@ -52,6 +52,11 @@ internal class WriteViewModel @Inject constructor() : ViewModel() {
             WriteViewEvent.HideWriteBottomSheet -> {
                 _writeViewState.showWriteBottomSheet.update { false }
             }
+            is WriteViewEvent.OnTextEditorResult -> {
+                _writeViewState.writeItemList.update {
+                    listOf(WriteItem.TextItem(idInc.getAndIncrement())) + it
+                }
+            }
         }
     }
 }

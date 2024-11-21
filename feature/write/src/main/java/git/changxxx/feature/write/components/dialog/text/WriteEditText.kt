@@ -15,16 +15,12 @@ import git.changxxx.feature.write.components.dialog.WriteBottomSheetState
 
 @Composable
 internal fun WriteEditText(
+    modifier: Modifier = Modifier,
     text: String,
     fontSize: Int,
-    fontStyle: List<WriteBottomSheetState.TextInput.TextStyle>,
+    fontStyle: WriteBottomSheetState.TextInput.TextStyle,
     onTextChanged: (String) -> Unit,
 ) {
-    val isBold = fontStyle.any { it is WriteBottomSheetState.TextInput.TextStyle.BOLD && it.isSelected }
-    val isItalic = fontStyle.any { it is WriteBottomSheetState.TextInput.TextStyle.ITALIC && it.isSelected }
-    val isUnderline = fontStyle.any { it is WriteBottomSheetState.TextInput.TextStyle.UNDERLINE && it.isSelected }
-    val isStrikeThrough = fontStyle.any { it is WriteBottomSheetState.TextInput.TextStyle.STRIKETHROUGH && it.isSelected }
-
     OutlinedTextField(
         value = text,
         onValueChange = { onTextChanged(it) },
@@ -32,20 +28,20 @@ internal fun WriteEditText(
             .fillMaxWidth(),
         textStyle = TextStyle(
             fontSize = fontSize.sp,
-            fontWeight = if (isBold) {
+            fontWeight = if (fontStyle.isBold) {
                 FontWeight.Bold
             } else {
                 FontWeight.Normal
             },
-            fontStyle = if (isItalic) {
+            fontStyle = if (fontStyle.isItalic) {
                 FontStyle.Italic
             } else {
                 FontStyle.Normal
             },
             textDecoration = TextDecoration.combine(
                 listOfNotNull(
-                    if (isUnderline) TextDecoration.Underline else null,
-                    if (isStrikeThrough) TextDecoration.LineThrough else null
+                    if (fontStyle.isUnderline) TextDecoration.Underline else null,
+                    if (fontStyle.isStrikethrough) TextDecoration.LineThrough else null
                 )
             )
         ),

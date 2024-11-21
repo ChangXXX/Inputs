@@ -1,25 +1,21 @@
 package git.changxxx.feature.write.components.dialog
 
+private const val DEFAULT_TEXT_SIZE = 16
+
 sealed interface WriteBottomSheetState {
     data object Initial : WriteBottomSheetState
     data class TextInput(
-        val textStyle: List<TextStyle> = listOf(
-            TextStyle.BOLD, TextStyle.ITALIC, TextStyle.UNDERLINE, TextStyle.STRIKETHROUGH
-        ),
+        val textStyle: TextStyle = TextStyle(),
         val text: String = "",
-        val textSize: Int = defaultTextSize,
+        val textSize: Int = DEFAULT_TEXT_SIZE,
     ) : WriteBottomSheetState {
 
-        sealed class TextStyle(
-            val isSelected: Boolean,
-        ) {
-
-            data object BOLD : TextStyle(false)
-            data object ITALIC : TextStyle(false)
-            data object UNDERLINE : TextStyle(false)
-            data object STRIKETHROUGH : TextStyle(false)
-        }
+        data class TextStyle(
+            val isBold: Boolean = false,
+            val isItalic: Boolean = false,
+            val isUnderline: Boolean = false,
+            val isStrikethrough: Boolean = false,
+        )
     }
 }
 
-private const val defaultTextSize = 16

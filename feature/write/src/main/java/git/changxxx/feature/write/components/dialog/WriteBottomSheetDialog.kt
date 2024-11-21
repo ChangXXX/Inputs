@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun WriteBottomSheetDialog(
     onDismiss: () -> Unit,
-    onClickConfirm: () -> Unit,
+    onClickConfirm: (WriteBottomSheetState) -> Unit,
 ) {
     val sheetState = rememberModalBottomSheetState()
     var currentContent by remember { mutableStateOf<WriteBottomSheetState>(WriteBottomSheetState.Initial) }
@@ -41,7 +41,8 @@ fun WriteBottomSheetDialog(
             is WriteBottomSheetState.TextInput -> {
                 WriteTextContents(
                     onBackClick = { currentContent = WriteBottomSheetState.Initial },
-                    onConfirm = onClickConfirm,
+                    onConfirm = { onClickConfirm(currentContent) },
+                    onChangedCurrentContent = { currentContent = it },
                     writeTextItem = currentContent as WriteBottomSheetState.TextInput
                 )
             }

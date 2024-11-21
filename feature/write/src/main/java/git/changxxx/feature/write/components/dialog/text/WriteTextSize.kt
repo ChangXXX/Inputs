@@ -13,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -26,7 +27,7 @@ internal fun WriteTextSize(
     onSizeChanged: (Int) -> Unit,
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(8.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -34,6 +35,7 @@ internal fun WriteTextSize(
     ) {
         Text(
             text = "Size",
+            fontWeight = FontWeight.Bold,
             modifier = Modifier.weight(1f)
         )
         Row(
@@ -41,12 +43,12 @@ internal fun WriteTextSize(
             horizontalArrangement = Arrangement.End,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            IconButton(onClick = { if (textSize < UPPER_BOUND_TEXT_SIZE) onSizeChanged(textSize + 1) }) {
-                Icon(Icons.Default.KeyboardArrowUp, contentDescription = "Increase Font Size")
-            }
-            Text(text = textSize.toString(), fontSize = 16.sp)
             IconButton(onClick = { if (textSize > LOWER_BOUND_TEXT_SIZE) onSizeChanged(textSize - 1) }) {
                 Icon(Icons.Default.KeyboardArrowDown, contentDescription = "Decrease Font Size")
+            }
+            Text(text = textSize.toString(), fontSize = 16.sp)
+            IconButton(onClick = { if (textSize < UPPER_BOUND_TEXT_SIZE) onSizeChanged(textSize + 1) }) {
+                Icon(Icons.Default.KeyboardArrowUp, contentDescription = "Increase Font Size")
             }
         }
     }

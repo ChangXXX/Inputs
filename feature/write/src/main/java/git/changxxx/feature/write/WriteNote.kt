@@ -28,7 +28,7 @@ internal fun WriteNote(
                 writeViewModel.setEvent(WriteViewEvent.HideWriteBottomSheet)
             },
             onClickConfirm = {
-                writeViewModel.setEvent(WriteViewEvent.HideWriteBottomSheet)
+                writeViewModel.setEvent(WriteViewEvent.OnTextEditorResult(it))
             }
         )
     }
