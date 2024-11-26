@@ -15,6 +15,7 @@ import git.changxxx.feature.write.components.dialog.WriteBottomSheetDialog
 import git.changxxx.feature.write.components.write.WriteContentWrapper
 import git.changxxx.feature.write.model.WriteItem
 import git.changxxx.feature.write.model.WriteViewEvent
+import timber.log.Timber
 
 @Composable
 internal fun WriteNote(

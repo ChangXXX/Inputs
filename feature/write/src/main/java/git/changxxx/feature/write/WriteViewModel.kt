@@ -8,17 +8,20 @@ import git.changxxx.feature.write.model.WriteViewEvent
 import git.changxxx.feature.write.model.WriteViewState
 import git.changxxx.feature.write.model.WriteViewStateImpl
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import java.util.concurrent.atomic.AtomicInteger
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 internal class WriteViewModel @Inject constructor() : ViewModel() {
 
-    private val idInc = AtomicInteger(1)
-
-    private val _writeViewState = WriteViewStateImpl()
+    private val _writeViewState = WriteViewStateImpl(
+        writeItemList = MutableStateFlow(listOf(WriteItem.AddItem(
+            onClickAddItem = { setEvent(WriteViewEvent.ShowWriteBottomSheet) }
+        ))),
+    )
     val writeViewState: WriteViewState = _writeViewState
 
     private val _writeViewEvent: MutableSharedFlow<WriteViewEvent> = MutableSharedFlow<WriteViewEvent>()
@@ -31,9 +34,7 @@ internal class WriteViewModel @Inject constructor() : ViewModel() {
     }
 
     fun setEvent(event: WriteViewEvent) {
-        viewModelScope.launch {
-            _writeViewEvent.emit(event)
-        }
+        _writeViewEvent.tryEmit(event)
     }
 
     private fun handleWriteViewEvent(event: WriteViewEvent) {
@@ -41,9 +42,11 @@ internal class WriteViewModel @Inject constructor() : ViewModel() {
             WriteViewEvent.ShowWriteBottomSheet -> {
                 _writeViewState.showWriteBottomSheet.update { true }
             }
+
             WriteViewEvent.HideWriteBottomSheet -> {
                 _writeViewState.showWriteBottomSheet.update { false }
             }
+
             is WriteViewEvent.OnTextEditorResult -> {
                 _writeViewState.writeItemList.update {
                     it.toMutableList().apply {

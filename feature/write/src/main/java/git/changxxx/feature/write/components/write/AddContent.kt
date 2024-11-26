@@ -24,7 +24,7 @@ internal fun AddContent(
             contentAlignment = Alignment.Center
         ) {
             IconButton(
-                onClick = { /*TODO*/ },
+                onClick = { item.onClickAddItem() },
             ) {
                 Icon(
                     imageVector = Icons.Default.Add,
