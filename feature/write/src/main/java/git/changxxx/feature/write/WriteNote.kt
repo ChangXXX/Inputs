@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import git.changxxx.feature.write.components.dialog.WriteBottomSheetDialog
+import git.changxxx.feature.write.components.write.WriteContentWrapper
 import git.changxxx.feature.write.model.WriteItem
 import git.changxxx.feature.write.model.WriteViewEvent
 
@@ -27,32 +28,18 @@ internal fun WriteNote(
             onDismiss = {
                 writeViewModel.setEvent(WriteViewEvent.HideWriteBottomSheet)
             },
-            onClickConfirm = {
+            onWriteTextConfirm = {
                 writeViewModel.setEvent(WriteViewEvent.OnTextEditorResult(it))
             }
         )
     }
 
     Column{
-        Text(
-            text = "add Item",
-            modifier = Modifier.clickable {
-                writeViewModel.setEvent(WriteViewEvent.ShowWriteBottomSheet)
-            }
-        )
         LazyColumn {
             items(
-                key = { item -> item.id },
                 items = writeItems
             ) { item ->
-                when(item) {
-                    WriteItem.AddItem -> {
-                        Text("Add Item Btn")
-                    }
-                    is WriteItem.TextItem -> {
-                        Text("Text Item Btn")
-                    }
-                }
+                WriteContentWrapper(item = item)
             }
         }
     }

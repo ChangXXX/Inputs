@@ -6,6 +6,6 @@ sealed interface WriteViewEvent {
     data object ShowWriteBottomSheet : WriteViewEvent
     data object HideWriteBottomSheet : WriteViewEvent
     data class OnTextEditorResult(
-        val result: WriteBottomSheetState,
+        val result: WriteBottomSheetState.TextInput,
     ) : WriteViewEvent
 }

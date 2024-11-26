@@ -30,14 +30,6 @@ internal class WriteViewModel @Inject constructor() : ViewModel() {
         }
     }
 
-    fun addTextItem() {
-        viewModelScope.launch {
-            _writeViewState.writeItemList.update {
-                listOf(WriteItem.TextItem(idInc.getAndIncrement())) + it
-            }
-        }
-    }
-
     fun setEvent(event: WriteViewEvent) {
         viewModelScope.launch {
             _writeViewEvent.emit(event)
@@ -54,7 +46,16 @@ internal class WriteViewModel @Inject constructor() : ViewModel() {
             }
             is WriteViewEvent.OnTextEditorResult -> {
                 _writeViewState.writeItemList.update {
-                    listOf(WriteItem.TextItem(idInc.getAndIncrement())) + it
+                    it.toMutableList().apply {
+                        add(
+                            0,
+                            WriteItem.TextItem(
+                                textStyle = event.result.textStyle,
+                                text = event.result.text,
+                                textSize = event.result.textSize
+                            )
+                        )
+                    }
                 }
             }
         }

@@ -1,6 +1,6 @@
 package git.changxxx.feature.write.components.dialog
 
-private const val DEFAULT_TEXT_SIZE = 16
+internal const val DEFAULT_TEXT_SIZE = 16
 
 sealed interface WriteBottomSheetState {
     data object Initial : WriteBottomSheetState
