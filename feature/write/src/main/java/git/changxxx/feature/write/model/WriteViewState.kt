@@ -1,9 +1,6 @@
 package git.changxxx.feature.write.model
 
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-
-internal interface WriteViewState {
-    val writeItemList: StateFlow<List<WriteItem>>
-    val showWriteBottomSheet: StateFlow<Boolean>
-}
+data class WriteViewState(
+    val writeItemList: List<WriteItem> = listOf(WriteItem.AddItem),
+    val showWriteBottomSheet: Boolean = false
+)

@@ -13,10 +13,12 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import git.changxxx.feature.write.model.WriteItem
+import git.changxxx.feature.write.model.WriteViewEvent
 
 @Composable
 internal fun TextContent(
-    item: WriteItem.TextItem
+    item: WriteItem.TextItem,
+    setEvent: (WriteViewEvent) -> Unit,
 ) {
     WriteItemCard {
         Box(

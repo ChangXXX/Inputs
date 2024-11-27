@@ -6,50 +6,43 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import git.changxxx.feature.write.model.WriteItem
 import git.changxxx.feature.write.model.WriteViewEvent
 import git.changxxx.feature.write.model.WriteViewState
-import git.changxxx.feature.write.model.WriteViewStateImpl
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
-import timber.log.Timber
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.flow.runningFold
+import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
 @HiltViewModel
-internal class WriteViewModel @Inject constructor() : ViewModel() {
+class WriteViewModel @Inject constructor() : ViewModel() {
 
-    private val _writeViewState = WriteViewStateImpl(
-        writeItemList = MutableStateFlow(listOf(WriteItem.AddItem(
-            onClickAddItem = { setEvent(WriteViewEvent.ShowWriteBottomSheet) }
-        ))),
+    private val _writeViewEvent: Channel<WriteViewEvent> = Channel()
+    val writeViewState = _writeViewEvent.receiveAsFlow().runningFold(
+        WriteViewState(),
+        ::handleViewEvent
+    ).stateIn(
+        viewModelScope,
+        SharingStarted.Eagerly,
+        WriteViewState()
     )
-    val writeViewState: WriteViewState = _writeViewState
-
-    private val _writeViewEvent: MutableSharedFlow<WriteViewEvent> = MutableSharedFlow<WriteViewEvent>()
-
-    init {
-
-        viewModelScope.launch {
-            _writeViewEvent.collect(::handleWriteViewEvent)
-        }
-    }
 
     fun setEvent(event: WriteViewEvent) {
-        _writeViewEvent.tryEmit(event)
+        _writeViewEvent.trySend(event)
     }
 
-    private fun handleWriteViewEvent(event: WriteViewEvent) {
-        when (event) {
+    private fun handleViewEvent(currentState: WriteViewState, event: WriteViewEvent): WriteViewState {
+        return when (event) {
             WriteViewEvent.ShowWriteBottomSheet -> {
-                _writeViewState.showWriteBottomSheet.update { true }
+                currentState.copy(showWriteBottomSheet = true)
             }
 
             WriteViewEvent.HideWriteBottomSheet -> {
-                _writeViewState.showWriteBottomSheet.update { false }
+                currentState.copy(showWriteBottomSheet = false)
             }
 
             is WriteViewEvent.OnTextEditorResult -> {
-                _writeViewState.writeItemList.update {
-                    it.toMutableList().apply {
+                currentState.copy(
+                    writeItemList = currentState.writeItemList.toMutableList().apply {
                         add(
                             0,
                             WriteItem.TextItem(
@@ -59,7 +52,7 @@ internal class WriteViewModel @Inject constructor() : ViewModel() {
                             )
                         )
                     }
-                }
+                )
             }
         }
     }

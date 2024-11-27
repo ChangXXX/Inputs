@@ -5,9 +5,7 @@ import git.changxxx.feature.write.components.dialog.WriteBottomSheetState.TextIn
 
 sealed interface WriteItem {
 
-    data class AddItem(
-        val onClickAddItem: () -> Unit,
-    ) : WriteItem
+    data object AddItem: WriteItem
 
     data class TextItem(
         val textStyle: TextStyle = TextStyle(),
