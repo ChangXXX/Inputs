@@ -3,7 +3,7 @@ package git.changxxx.feature.write.components.dialog.initial
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -13,9 +13,6 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.AddCircle
-import androidx.compose.material.icons.filled.Call
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -23,12 +20,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import git.changxxx.feature.write.R
 import git.changxxx.feature.write.components.dialog.WriteBottomSheetState
 import git.changxxx.feature.write.components.write.WriteItemCard
-import git.changxxx.feature.write.model.WriteItem
+
+private val GAP_BETWEEN_TEXT_ICON = 8.dp
 
 @Composable
 internal fun WriteBottomSheetContents(
@@ -42,11 +41,11 @@ internal fun WriteBottomSheetContents(
             WriteItemCard {
                 Column(
                     modifier = Modifier
-                        .fillMaxSize()
-                        .height(100.dp)
+                        .fillMaxWidth()
                         .clickable {
                             onChangedCurrentContent(WriteBottomSheetState.TextInput())
-                        },
+                        }
+                        .padding(12.dp),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
@@ -54,58 +53,39 @@ internal fun WriteBottomSheetContents(
                         text = "TEXT",
                         style = MaterialTheme.typography.titleMedium
                     )
+                    Spacer(modifier = Modifier.height(GAP_BETWEEN_TEXT_ICON))
                     Icon(
                         imageVector = Icons.Default.Add,
-                        contentDescription = "Add Text Item"
+                        contentDescription = "Add Text Item",
+                        tint = Color.Black
                     )
                 }
             }
         }
         item {
-            WriteItemCard(
-                modifier = Modifier.clickable {
-                    onChangedCurrentContent(WriteBottomSheetState.TextInput())
-                }
-            ) {
+            WriteItemCard{
                 Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            onChangedCurrentContent(WriteBottomSheetState.ImageInput())
+                        }
+                        .padding(12.dp),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
+                    Text(
+                        text = "Images",
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                    Spacer(modifier = Modifier.height(GAP_BETWEEN_TEXT_ICON))
                     Icon(
-                        imageVector = Icons.Default.Call,
-                        contentDescription = "Add Text Item"
+                        painter = painterResource(id = R.drawable.ic_image_24dp),
+                        contentDescription = "Add Image Items",
+                        tint = Color.Black
                     )
                 }
             }
         }
-    }
-}
-
-@Composable
-fun TwoByTwoGridScreen() {
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(2), // 2열로 고정
-        modifier = Modifier.fillMaxSize(),
-        content = {
-            items(4) { index -> // 4개의 아이템만 표시
-                GridItem(index)
-            }
-        }
-    )
-}
-
-@Composable
-fun GridItem(index: Int) {
-    Card(
-        modifier = Modifier
-            .padding(8.dp)
-            .fillMaxSize(),
-        shape = RoundedCornerShape(8.dp),
-    ) {
-        Text(
-            text = "Item $index",
-            fontSize = 18.sp,
-            textAlign = TextAlign.Center,
-        )
     }
 }

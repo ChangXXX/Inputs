@@ -2,9 +2,7 @@ package git.changxxx.feature.write.components.write
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -24,7 +22,6 @@ internal fun WriteItemCard(
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .wrapContentHeight()
             .padding(CARD_PADDING),
         border = BorderStroke(width = BORDER_WIDTH, color = MaterialTheme.colorScheme.primaryContainer),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.background),

@@ -9,6 +9,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import git.changxxx.feature.write.components.dialog.image.ImageInputContents
 import git.changxxx.feature.write.components.dialog.initial.WriteBottomSheetContents
 import git.changxxx.feature.write.components.dialog.text.WriteTextContents
 import kotlinx.coroutines.launch
@@ -44,6 +45,12 @@ fun WriteBottomSheetDialog(
                     onConfirm = { onWriteTextConfirm(currentContent as WriteBottomSheetState.TextInput) },
                     onChangedCurrentContent = { currentContent = it },
                     writeTextItem = currentContent as WriteBottomSheetState.TextInput
+                )
+            }
+
+            is WriteBottomSheetState.ImageInput -> {
+                ImageInputContents(
+
                 )
             }
         }
