@@ -13,7 +13,7 @@ internal fun WriteTextContents(
     modifier: Modifier = Modifier,
     onBackClick: () -> Unit,
     onConfirm: () -> Unit,
-    onChangedCurrentContent: (WriteBottomSheetState) -> Unit,
+    onChangedCurrentContent: (WriteBottomSheetState.TextInput) -> Unit,
     writeTextItem: WriteBottomSheetState.TextInput,
 ) {
     Column(

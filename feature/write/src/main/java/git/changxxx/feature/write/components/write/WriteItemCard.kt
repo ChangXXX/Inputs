@@ -21,7 +21,6 @@ internal fun WriteItemCard(
 ) {
     Card(
         modifier = modifier
-            .fillMaxWidth()
             .padding(CARD_PADDING),
         border = BorderStroke(width = BORDER_WIDTH, color = MaterialTheme.colorScheme.primaryContainer),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.background),

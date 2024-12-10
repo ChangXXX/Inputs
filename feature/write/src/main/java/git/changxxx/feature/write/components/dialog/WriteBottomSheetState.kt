@@ -27,8 +27,8 @@ sealed interface WriteBottomSheetState {
     ) : WriteBottomSheetState {
 
         sealed interface GalleryViewType {
-            data object Grid : GalleryViewType
             data object Horizontal : GalleryViewType
+            data object Grid : GalleryViewType
         }
     }
 }

@@ -19,6 +19,7 @@ import kotlinx.coroutines.launch
 fun WriteBottomSheetDialog(
     onDismiss: () -> Unit,
     onWriteTextConfirm: (WriteBottomSheetState.TextInput) -> Unit,
+    onWriteImageConfirm: (WriteBottomSheetState.ImageInput) -> Unit,
 ) {
     val sheetState = rememberModalBottomSheetState()
     var currentContent by remember { mutableStateOf<WriteBottomSheetState>(WriteBottomSheetState.Initial) }
@@ -50,7 +51,10 @@ fun WriteBottomSheetDialog(
 
             is WriteBottomSheetState.ImageInput -> {
                 ImageInputContents(
-
+                    onBackClick = { currentContent = WriteBottomSheetState.Initial },
+                    onConfirm = { onWriteImageConfirm(currentContent as WriteBottomSheetState.ImageInput) },
+                    onChangedCurrentContent = { currentContent = it },
+                    writeImageItem = currentContent as WriteBottomSheetState.ImageInput
                 )
             }
         }

@@ -40,6 +40,9 @@ private fun WriteNote(
             },
             onWriteTextConfirm = {
                 setEvent(WriteViewEvent.OnTextEditorResult(it))
+            },
+            onWriteImageConfirm = {
+
             }
         )
     }
