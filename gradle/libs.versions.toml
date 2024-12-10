@@ -204,6 +204,7 @@ compose = [
     "compose-runtime-livedata",
     "compose-material3",
     "compose-ui",
+    "compose-ui-tooling",
     "compose-ui-graphics",
     "compose-ui-tooling-preview",
     "lifecycle-runtime-compose"
