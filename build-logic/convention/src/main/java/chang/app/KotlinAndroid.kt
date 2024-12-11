@@ -70,6 +70,10 @@ internal fun Project.configureKotlinJvm() {
  * Configure base Kotlin options
  */
 private fun Project.configureKotlin() {
+
+    with(pluginManager) {
+        apply("org.jetbrains.kotlin.plugin.serialization")
+    }
     // Use withType to workaround https://youtrack.jetbrains.com/issue/KT-55947
     tasks.withType<KotlinCompile>().configureEach {
 
@@ -85,5 +89,8 @@ private fun Project.configureKotlin() {
                 "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
             )
         }
+    }
+    dependencies {
+        add("implementation", versionCatalog.findLibrary("kotlinx.serialization.json").get())
     }
 }

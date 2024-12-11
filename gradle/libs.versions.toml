@@ -241,3 +241,4 @@ inputs-android-compose-library = { id = "chang.android.compose.library", version
 inputs-android-hilt = { id = "chang.android.hilt", version = "unspecified" }
 inputs-android-feature = { id = "chang.android.feature", version = "unspecified" }
 inputs-android-coroutine = { id = "chang.android.coroutine", version = "unspecified" }
+inputs-kotlin-library = { id = "chang.kotlin.library", version = "unspecified" }
