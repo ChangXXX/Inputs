@@ -13,6 +13,11 @@ object OsVersionUtils {
     fun isGreaterOrEqualThanS(): Boolean {
         return isGreaterThanOrEquals(Build.VERSION_CODES.S)
     }
+
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.Q)
+    fun isGreaterOrEqualThanQ(): Boolean {
+        return isGreaterThanOrEquals(Build.VERSION_CODES.Q)
+    }
 }
 
 @Retention(AnnotationRetention.SOURCE)

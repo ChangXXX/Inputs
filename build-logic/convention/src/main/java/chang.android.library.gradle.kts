@@ -1,6 +1,5 @@
 
 import chang.app.configureKotlinAndroid
-import chang.app.versionCatalog
 
 plugins {
     id("com.android.library")
@@ -8,7 +7,3 @@ plugins {
 }
 
 configureKotlinAndroid()
-
-dependencies {
-    add("implementation", versionCatalog.findLibrary("kotlinx.serialization.json").get())
-}

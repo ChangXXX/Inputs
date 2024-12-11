@@ -6,13 +6,12 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
-
 val libs = versionCatalog
 
 dependencies {
     add("implementation", project(":core:designsystem"))
-//    add("implementation", project(":"))
-
+    add("implementation", project(":core:domain"))
+    add("implementation", libs.findLibrary("hilt.navigation.compose").get())
     add("implementation", libs.findLibrary("timber").get())
 }
 
